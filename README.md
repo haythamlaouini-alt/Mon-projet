@@ -18,8 +18,8 @@
 
 | Prénom & Nom | Rôle / Tâches principales | Lien Github |
 |--------------|---------------------------|-------------|
-| Haytham Laouini  |                       | [@pseudo](https://github.com/pseudo) |
-| Hajar Meskaoui  |                        | [@pseudo](https://github.com/pseudo) |
+| Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com/pseudo) |
+| Hajar Meskaoui  |                        | [@Hajar2085](https://github.com/pseudo) |
 
 
 ---
