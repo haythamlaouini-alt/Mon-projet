@@ -1,5 +1,5 @@
 # Mon-projet
-# Nom du Projet (ex: MyManager - Gestion Hospitalière)
+# Nom du Projet : Site de Voyage
 
 <!-- Mettez un court slogan ou une description en une phrase ici -->
 > Application Backoffice de gestion réalisée dans le cadre du module Dévelopement web.
@@ -8,25 +8,25 @@
 
 <!-- REMPLACEZ LES LIENS CI-DESSOUS -->
 - **APPLICATION DÉPLOYÉE (Live Demo) :** [CLIQUEZ ICI POUR VOIR LE SITE](https://)
-- **Repository GitHub :** [Lien vers ce repo](https://)
+- **Repository GitHub :** [Lien vers ce repo](https://github.com/haythamlaouini-alt/Mon-projet)
 
 ---
 
 ## 👥 Membres de l'Équipe
 
-**Nom du Groupe :** [Insérer le nom du groupe ici]
+**Nom du Groupe :** [Haytham Laouini & Hajar Meskaoui]
 
 | Prénom & Nom | Rôle / Tâches principales | Lien Github |
 |--------------|---------------------------|-------------|
-| Étudiant 1   | (ex: Dashboard, ChartJS)  | [@pseudo](https://github.com/pseudo) |
-| Étudiant 2   | (ex: CRUD Utilisateurs)   | [@pseudo](https://github.com/pseudo) |
-| Étudiant 3   | (ex: CSS, Responsive)     | [@pseudo](https://github.com/pseudo) |
+| Haytham Laouini  |                       | [@pseudo](https://github.com/pseudo) |
+| Hajar Meskaoui  |                        | [@pseudo](https://github.com/pseudo) |
+
 
 ---
 
 ## 📝 Thème Choisi
 <!-- Indiquez le thème choisi parmi la liste ou votre sujet personnalisé -->
-*   **Thème :** (ex: Gestion de Bibliothèque / Gestion Immobilière / Custom...)
+*   **Thème :** site de voyage
 *   **Description :** Une brève explication du but de l'application.
 
 ---
