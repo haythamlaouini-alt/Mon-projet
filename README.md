@@ -7,7 +7,7 @@
 ## 🔗 Liens Importants
 
 <!-- REMPLACEZ LES LIENS CI-DESSOUS -->
-- **APPLICATION DÉPLOYÉE (Live Demo) :https:///C:/Users/pc/Desktop/projet%20site%20de%20voyage/login.html
+- **APPLICATION DÉPLOYÉE (Live Demo) :** [CLIQUEZ ICI POUR VOIR LE SITE](https://)
 - **Repository GitHub :** [Lien vers ce repo](https://github.com/haythamlaouini-alt/Mon-projet)
 
 ---
