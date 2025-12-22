@@ -14,13 +14,13 @@
 
 ## 👥 Membres de l'Équipe
 
-**Nom du Groupe :** [Haytham Laouini & Hajar Meskaoui]
+**Nom du Groupe :** [HHH]
 
 | Prénom & Nom | Rôle / Tâches principales | Lien Github |
 |--------------|---------------------------|-------------|
 | Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com/pseudo) |
 | Hajar Meskaoui  |                        | [@Hajar2085](https://github.com/pseudo) |
-
+| Hajar Elmotioui  |                        |  |
 
 ---
 
