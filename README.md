@@ -20,7 +20,7 @@
 |--------------|---------------------------|-------------|
 | Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com/pseudo) |
 | Hajar Meskaoui  |                        | [@Hajar2085](https://github.com/pseudo) |
-| Hajar Elmotioui  |                        |  |
+| Hajar El moutiou  |                        |  |
 
 ---
 
