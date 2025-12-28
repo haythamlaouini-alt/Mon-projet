@@ -17,23 +17,21 @@
     </div>
 
     <script>
-
-    document.addEventListener("DOMContentLoaded", function() {
-    const email = localStorage.getItem("email");
-
-    if (!email) {
+        document.addEventListener("DOMContentLoaded", function() {
+    const nom = localStorage.getItem("nom");
+    if (!nom) {
         window.location.href = "login.html";
         return;
     }
-    document.getElementById("nom").textContent = email;
 
-   
+    document.getElementById("nom").textContent = nom;
+
     document.getElementById("logoutBtn").addEventListener("click", function() {
+        localStorage.removeItem("nom");
         localStorage.removeItem("email");
         localStorage.removeItem("mdp");
         window.location.href = "login.html";
     });
-
 });
 </script>
 </body>
