@@ -18,9 +18,9 @@
 
 | Prénom & Nom | Rôle / Tâches principales | Lien Github |
 |--------------|---------------------------|-------------|
-| Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com/pseudo) |
-| Hajar Meskaoui  |                        | [@Hajar2085](C:\Users\ordi\OneDrive\Documents\GitHub\Hajar2085) |
-| Hajar El moutiou  |                        |[@@hajarelmoutiou4-dot]  |
+| Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com//haythamlaouini-alt) |
+| Hajar Meskaoui  |                        | [@Hajar2085](https://github.com//Hajar2085) |
+| Hajar El moutiou  |                        |[@hajarelmoutiou4-dot] (https://github.com//hajarelmoutiou4-dot)|
 
 ---
 
