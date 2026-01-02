@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login TravelGo</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="background"></div>
-    <form  class="login-wrapper" id="loginForm">
-        <fieldset><legend>Informations Personnelles :</legend>
-            <h1>TravelGo ✈️</h1>
+
+    <form class="login-wrapper" id="loginForm">
+        <fieldset>
+            <legend>Connexion Lecteur 📚</legend>
+            <h1>Ma Bibliothèque</h1>
+
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required placeholder="Entrer votre Nom">
-            <br><br>
+            <input type="text" id="nom" name="nom" required placeholder="Entrez votre nom">
+
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required placeholder="Entrer votre Email">
-            <br><br>
+            <input type="email" id="email" name="email" required placeholder="Entrez votre email">
+
             <label for="mdp">Mot de passe :</label>
-            <input type="password" name="password" id="mdp" required placeholder="Entrer votre mot de passe">
-            <br><br>
-            <button type="submit" >Envoyer</button>
-            <br><br>
-            
+            <input type="password" name="password" id="mdp" required placeholder="Entrez votre mot de passe">
+
+            <button type="submit">Se connecter</button>
+
             <div class="footer">
-                © 2025 TravelGo
+                © 2026 Ma Bibliothèque
             </div>
         </fieldset>
     </form>
+
     <script>
     document.getElementById("loginForm").addEventListener("submit", function(e) {
         e.preventDefault();
@@ -36,20 +39,17 @@
         const mdp = document.getElementById("mdp").value;
 
         if (!email || !mdp) {
-            alert("Veuillez remplir lemail et le mot de passe.");
+            alert("Veuillez remplir l'email et le mot de passe.");
             return;
         }
 
+        // Stockage temporaire pour simuler une connexion
         localStorage.setItem("nom", nom);
         localStorage.setItem("email", email);
         localStorage.setItem("mdp", mdp);
 
-
-        window.location.href = "dashbord.html";
+        window.location.href = "index.html"; // Page après connexion
     });
-</script>
-
-
-
+    </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 # Mon-projet
-# Nom du Projet : Site de Voyage
+# Nom du Projet : Site d'une Bibliotheque Digitale'
 
 <!-- Mettez un court slogan ou une description en une phrase ici -->
 > Application Backoffice de gestion réalisée dans le cadre du module Dévelopement web.
@@ -20,14 +20,14 @@
 |--------------|---------------------------|-------------|
 | Haytham Laouini  |                       | [@haythamlaouini-alt](https://github.com//haythamlaouini-alt) |
 | Hajar Meskaoui  |                        | [@Hajar2085](https://github.com//Hajar2085) |
-| Hajar El moutiou  |                        |[@hajarelmoutiou4-dot] (https://github.com//hajarelmoutiou4-dot)|
+| Hajar El moutiou  |                      |[@hajarelmoutiou4-dot](https://github.com//hajarelmoutiou4-dot) |
 
 ---
 
 ## 📝 Thème Choisi
 <!-- Indiquez le thème choisi parmi la liste ou votre sujet personnalisé -->
-*   **Thème :** site de voyage
-*   **Description : Votre meilleur guide des voyages inoubliables .
+*   **Thème :** Bibliotheque
+*   **Description : "Votre meilleur guide dans l’univers des livres et de la connaissance." 📚✨.
 
 ---
 
@@ -35,19 +35,27 @@
 <!-- Cochez les cases [x] pour les fonctionnalités terminées. Laissez [ ] pour ce qui n'est pas fait. -->
 
 ### Fonctionnalités Principales
-- [ ] **CRUD 1 :** [Utilisateurs (Create, Read, Update, Delete)
-→ (id_utilisateur, nom, email, mot_de_passe)]
-- [ ] **CRUD 2 :** [Destinations (Create, Read, Update, Delete)
-→ (id_destination, nom, pays, ville , description,prix_moyen)]
-- [ ] **CRUD 3 :** [Séjours (Create, Read, Update, Delete)
-→ (id_voyage, titre, id_destination, prix, date_depart, date_retour)]
-- [ ] **CRUD 4 :** [Réservations (Create, Read, Update, Delete)
-→ (id_reservation, date_reservation, nombre_personnes, prix_total, mode_paiement, id_utilisateur, id_voyage)]
-- [ ] **CRUD 5 :** [Avis  (Create, Read, Update, Delete)
-→ (id_avis, note, commentaire, date_avis, id_utilisateur, id_voyage)]
-- [ ] **Recherche & Filtres** dans les tableaux : Recherche par destination, prix, dates
-Filtres par pays, budget, durée, note
-- [ ] **Pagination**
+ CRUD 1 : [Utilisateurs / Lecteurs (Create, Read, Update, Delete)
+→ (id_lecteur, nom, email, mot_de_passe)]
+
+ CRUD 2 : [Catégories de livres (Create, Read, Update, Delete)
+→ (id_categorie, nom_categorie)]
+
+ CRUD 3 : [Livres (Create, Read, Update, Delete)
+→ (id_livre, titre, auteur, id_categorie, prix, photo)]
+
+ CRUD 4 : [Emprunts / Réservations (Create, Read, Update, Delete)
+→ (id_emprunt, date_emprunt, date_retour, id_lecteur, id_livre)]
+
+ CRUD 5 : [Avis sur les livres (Create, Read, Update, Delete)
+→ (id_avis, note, commentaire, date_avis, id_lecteur, id_livre)]
+
+ Recherche & Filtres :
+Recherche par titre, auteur ou catégorie
+Filtres par catégorie, note, disponibilité
+
+  Pagination :
+Pour les tableaux de livres, lecteurs et avis
 
 ### Dashboard & Data
 - [ ] **KPIs :** Cartes avec chiffres clés (Total utilisateurs, revenus, etc.)
