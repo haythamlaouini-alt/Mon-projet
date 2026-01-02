@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bibliothèque Digitale</title>
+ 
+
+  <!-- Icons & libs -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles55.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <nav>
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="#home"><i class="ri-book-2-line"></i> Bibliothèque</a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-line"></i>
+      </div>
+    </div>
+
+    <ul class="nav__links" id="nav-links">
+      <li class="link"><a href="#home">Accueil</a></li>
+      <li class="link"><a href="#about">À propos</a></li>
+      <li class="link"><a href="#books">Livres</a></li>
+      <li class="link"><a href="#readers">Lecteurs</a></li>
+      <li class="link"><a href="#reviews">Avis</a></li>
+      <li class="link"><button class="btn">Connexion</button></li>
+    </ul>
+  </nav>
+
+  <div class="section__container header__container" id="home">
+    <div class="header__content">
+      <h4>Bienvenue à</h4>
+      <h1 class="section__header">La Bibliothèque Digitale</h1>
+      <p>
+        Gérez vos livres, lecteurs et lectures dans une interface simple,
+        élégante et moderne.
+      </p>
+      <button class="btn">Explorer les livres</button>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="section__container about__container" id="about">
+  <h2 class="section__header">Notre Mission</h2>
+  <p class="section__description">
+    Offrir un accès facile aux livres et encourager la lecture.
+  </p>
+
+  <div class="about__grid">
+    <div class="about__card">
+      <span><i class="ri-book-open-line"></i></span>
+      <div>
+        <h4>Livres variés</h4>
+        <p>Romans, science, histoire et plus.</p>
+      </div>
+    </div>
+
+    <div class="about__card">
+      <span><i class="ri-user-line"></i></span>
+      <div>
+        <h4>Lecteurs</h4>
+        <p>Une communauté passionnée.</p>
+      </div>
+    </div>
+
+    <div class="about__card">
+      <span><i class="ri-time-line"></i></span>
+      <div>
+        <h4>Suivi des lectures</h4>
+        <p>Gardez trace des livres lus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRES -->
+<h2 class="section__header">Livres populaires</h2>
+
+  <div class="class__grid">
+    <div class="class__card">
+      <div class="class__content">
+        <h4>Le Petit Prince</h4>
+        <p>Antoine de Saint-Exupéry</p>
+      </div>
+    </div>
+
+    <div class="class__card">
+      <div class="class__content">
+        <h4>L'Alchimiste</h4>
+        <p>Paulo Coelho</p>
+      </div>
+    </div>
+
+    <div class="class__card">
+      <div class="class__content">
+        <h4>1984</h4>
+        <p>George Orwell</p>
+      </div>
+    </div>
+  </div>
+</section> 
+<section class="section">
+  <div class="section-header">
+    <h2>📚 Gestion des Livres</h2>
+  </div>
+
+  <div class="card">
+    <input type="text" class="loop" id="searchBook" placeholder="🔍 Rechercher un livre..." />
+
+    <form id="bookForm" class="form-grid">
+      <input type="hidden" id="bookId">
+
+      <div class="form-group">
+        <label>Titre</label>
+        <input type="text" id="bookTitle" required>
+      </div>
+
+      <div class="form-group">
+        <label>Auteur</label>
+        <input type="text" id="bookAuthor" required>
+      </div>
+
+      <div class="form-group">
+        <label>Catégorie</label>
+        <input type="text" id="bookCategory">
+      </div>
+
+      <div class="form-group">
+        <label>Photo (URL)</label>
+        <input type="text" id="bookImage" placeholder="https://...">
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary">Ajouter</button>
+        <button type="button" class="btn btn-cancel" onclick="resetBookForm()">Annuler</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Livres</th>
+          <th>Titres</th>
+          <th>Auteurs</th>
+          <th>Catégories</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="booksTable"></tbody>
+    </table>
+  </div>
+</section>
+<script>
+let editingBookId = null;
+
+function getBooks() {
+  return JSON.parse(localStorage.getItem("books")) || [];
+}
+
+function saveBooks(data) {
+  localStorage.setItem("books", JSON.stringify(data));
+}
+
+function loadBooks(filter = "") {
+  const books = getBooks();
+  const table = document.getElementById("booksTable");
+  table.innerHTML = "";
+
+  books
+    .filter(b => b.title.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(b => {
+      table.innerHTML += `
+        <tr>
+          <td><img src="${b.image}" width="50"></td>
+          <td>${b.title}</td>
+          <td>${b.author}</td>
+          <td>${b.category}</td>
+          <td>
+            <button onclick="editBook(${b.id})">✏️</button>
+            <button onclick="deleteBook(${b.id})">🗑️</button>
+          </td>
+        </tr>`;
+    });
+}
+
+document.getElementById("bookForm").onsubmit = e => {
+  e.preventDefault();
+  const books = getBooks();
+
+  const book = {
+    id: editingBookId || Date.now(),
+    title: bookTitle.value,
+    author: bookAuthor.value,
+    category: bookCategory.value,
+    image: bookImage.value || "https://via.placeholder.com/50"
+  };
+
+  editingBookId
+    ? books.splice(books.findIndex(b => b.id === editingBookId), 1, book)
+    : books.push(book);
+
+  saveBooks(books);
+  resetBookForm();
+  loadBooks();
+};
+
+function editBook(id) {
+  const b = getBooks().find(b => b.id === id);
+  editingBookId = id;
+  bookTitle.value = b.title;
+  bookAuthor.value = b.author;
+  bookCategory.value = b.category;
+  bookImage.value = b.image;
+}
+
+function deleteBook(id) {
+  saveBooks(getBooks().filter(b => b.id !== id));
+  loadBooks();
+}
+
+function resetBookForm() {
+  bookForm.reset();
+  editingBookId = null;
+}
+
+searchBook.oninput = e => loadBooks(e.target.value);
+document.addEventListener("DOMContentLoaded", loadBooks);
+</script>
+
+<section class="section">
+  <div class="section-header">
+    <h2>🏷️ Catégories</h2>
+  </div>
+
+  <div class="card">
+    <input type="text" id="searchCategory" placeholder="🔍 Rechercher catégorie">
+
+    <form id="categoryForm" class="form-grid">
+      <input type="hidden" id="categoryId">
+      <input type="text" id="categoryName" placeholder="Nom catégorie" required>
+      <button class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <ul id="categoryList"></ul>
+  </div>
+</section>
+
+<script>
+const categoryForm = document.getElementById("categoryForm");
+const categoryName = document.getElementById("categoryName");
+const categoryList = document.getElementById("categoryList");
+const searchCategory = document.getElementById("searchCategory");
+
+// Récupérer les catégories depuis localStorage
+function getCategories() {
+  return JSON.parse(localStorage.getItem("categories")) || [];
+}
+
+// Sauvegarder les catégories
+function saveCategories(categories) {
+  localStorage.setItem("categories", JSON.stringify(categories));
+}
+
+// Charger et afficher les catégories
+function loadCategories(filterText = "") {
+  const filter = filterText.toLowerCase();
+  categoryList.innerHTML = "";
+
+  getCategories()
+    .filter(c => c.name && c.name.toLowerCase().includes(filter)) // protection si name absent
+    .forEach(c => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${c.name} 
+        <button onclick="deleteCategory(${c.id})">🗑️</button>
+      `;
+      categoryList.appendChild(li);
+    });
+}
+
+// Ajouter une catégorie
+categoryForm.onsubmit = e => {
+  e.preventDefault();
+  const name = categoryName.value.trim();
+  if (!name) return; // empêche ajout vide
+
+  const categories = getCategories();
+  categories.push({ id: Date.now(), name });
+  saveCategories(categories);
+
+  categoryForm.reset();
+  loadCategories(searchCategory.value);
+};
+
+// Supprimer une catégorie
+function deleteCategory(id) {
+  const categories = getCategories().filter(c => c.id !== id);
+  saveCategories(categories);
+  loadCategories(searchCategory.value);
+}
+
+// Recherche en temps réel
+searchCategory.oninput = e => loadCategories(e.target.value);
+
+// Charger au démarrage
+document.addEventListener("DOMContentLoaded", () => loadCategories());
+</script>
+
+
+
+
+
+
+<!-- LECTEURS -->
+<section class="section">
+  <div class="section-header">
+    <h2>👥 Lecteurs</h2>
+  </div>
+
+  <div class="card">
+    <input type="text" class="loop" id="searchReader" placeholder="🔍 Rechercher lecteur">
+
+    <form id="readerForm" class="form-grid">
+      <input type="text" id="readerName" placeholder="Nom lecteur" required>
+      <button class="btn btn-primary">Ajouter</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <ul id="readerList"></ul>
+  </div>
+</section>
+<script>
+function getReaders(){return JSON.parse(localStorage.getItem("readers"))||[]}
+function saveReaders(d){localStorage.setItem("readers",JSON.stringify(d))}
+function loadReaders(f=""){
+  readerList.innerHTML="";
+  getReaders().filter(r=>r.name.includes(f)).forEach(r=>{
+    readerList.innerHTML+=`<li>${r.name}
+    <button onclick="deleteReader(${r.id})">🗑️</button></li>`
+  })
+}
+readerForm.onsubmit=e=>{
+  e.preventDefault();
+  const d=getReaders();
+  d.push({id:Date.now(),name:readerName.value});
+  saveReaders(d);readerForm.reset();loadReaders();
+}
+function deleteReader(id){
+  saveReaders(getReaders().filter(r=>r.id!==id));
+  loadReaders();
+}
+searchReader.oninput=e=>loadReaders(e.target.value);
+document.addEventListener("DOMContentLoaded",loadReaders);
+</script>
+
+
+
+<section class="section">
+    <div class="section-header">
+        <h2>👥 Gestion des Utilisateurs</h2>
+    </div>
+    
+    <div class="card">
+        <!-- Formulaire d'ajout/modification d'utilisateur -->
+        <form id="userForm" class="form-grid">
+            <input type="hidden" id="userId" value="">
+            
+            <div class="form-group">
+                <label for="userName">Nom </label>
+                <input type="text" id="userName" required placeholder="Ex: Salma Rami">
+            </div>
+            
+            <div class="form-group">
+                <label for="userEmail">Email *</label>
+                <input type="email" id="userEmail" required placeholder="Ex: salmarami@email.com">
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="userSubmitBtn">Ajouter</button>
+                <button type="button" class="btn btn-cancel" id="userCancelBtn" style="display: none;">Annuler</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Liste des utilisateurs -->
+    <div class="card">
+        <h3>Liste des Utilisateurs</h3>
+        <div id="usersList" class="users-table-container">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Les utilisateurs seront ajoutés dynamiquement -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+let editingUserId = null;
+
+// Récupérer les utilisateurs depuis localStorage
+function getUsers() {
+    const users = localStorage.getItem('users');
+    return users ? JSON.parse(users) : [];
+}
+
+// Sauvegarder les utilisateurs
+function saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// Générer un nouvel ID unique
+function generateUserId(users) {
+    return users.length ? Math.max(...users.map(u => u.id)) + 1 : 1;
+}
+
+// Réinitialiser le formulaire
+function resetUserForm() {
+    document.getElementById('userForm').reset();
+    editingUserId = null;
+    document.getElementById('userCancelBtn').style.display = 'none';
+    document.getElementById('userSubmitBtn').textContent = 'Ajouter';
+}
+
+// Charger les utilisateurs dans le tableau
+function loadUsers() {
+    const users = getUsers();
+    const tbody = document.getElementById('usersTableBody');
+    tbody.innerHTML = '';
+
+    users.forEach(u => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${u.id}</td>
+            <td>${u.nom}</td>
+            <td>${u.email}</td>
+            <td>
+                <button onclick="editUser(${u.id})">✏️</button>
+                <button onclick="deleteUser(${u.id})">🗑️</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Ajouter ou modifier un utilisateur
+function saveUser() {
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+
+    // Validation
+    if (!name || !email) {
+        alert('Veuillez remplir tous les champs obligatoires');
+        return;
+    }
+
+    // Validation de l'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Veuillez entrer une adresse email valide');
+        return;
+    }
+
+    const users = getUsers();
+
+    // Vérifier que l'email n'est pas utilisé par un autre utilisateur
+    const emailExists = users.some(u => u.email.toLowerCase() === email.toLowerCase() && u.id !== editingUserId);
+    if (emailExists) {
+        alert('Cet email est déjà utilisé par un autre utilisateur');
+        return;
+    }
+
+    if (editingUserId) {
+        // Modification
+        const index = users.findIndex(u => u.id === editingUserId);
+        if (index !== -1) {
+            users[index] = { id: editingUserId, nom: name, email: email };
+        }
+    } else {
+        // Création
+        const newUser = { id: generateUserId(users), nom: name, email: email };
+        users.push(newUser);
+    }
+
+    saveUsers(users);
+    resetUserForm();
+    loadUsers();
+}
+
+// Éditer un utilisateur
+function editUser(id) {
+    const users = getUsers();
+    const user = users.find(u => u.id === id);
+    if (!user) return;
+
+    editingUserId = id;
+    document.getElementById('userName').value = user.nom;
+    document.getElementById('userEmail').value = user.email;
+    document.getElementById('userSubmitBtn').textContent = 'Modifier';
+    document.getElementById('userCancelBtn').style.display = 'inline-block';
+}
+
+// Supprimer un utilisateur
+function deleteUser(id) {
+    let users = getUsers();
+    users = users.filter(u => u.id !== id);
+    saveUsers(users);
+    loadUsers();
+}
+
+// Lier le formulaire
+document.getElementById('userForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    saveUser();
+});
+
+// Bouton annuler
+document.getElementById('userCancelBtn').addEventListener('click', resetUserForm);
+
+// Charger les utilisateurs au démarrage
+document.addEventListener('DOMContentLoaded', loadUsers);
+</script>
+
+
+
+<!-- AVIS -->
+<section class="section">
+  <div class="section-header">
+    <h2>💬 Avis des Lecteurs</h2>
+  </div>
+
+  <div class="card">
+    <input type="text" id="searchAvis" placeholder="🔍 Rechercher un avis..." />
+
+    <form id="avisForm" class="form-grid">
+      <input type="hidden" id="avisId">
+
+      <div class="form-group">
+        <label>Nom du lecteur</label>
+        <input type="text" id="avisNom" required placeholder="Ex: Salma Rami">
+      </div>
+
+      <div class="form-group">
+        <label>Note</label>
+        <select id="avisNote" required>
+          <option value="">Choisir</option>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="1">⭐</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label>Commentaire</label>
+        <textarea id="avisComment" rows="3" required placeholder="Votre avis..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="button" class="btn btn-cancel" onclick="resetAvis()">Annuler</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>Lecteur</th>
+          <th>Note</th>
+          <th>Avis</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="avisTable"></tbody>
+    </table>
+  </div>
+</section>
+<script>
+let editingAvisId = null;
+
+function getAvis() {
+  return JSON.parse(localStorage.getItem("avis")) || [];
+}
+
+function saveAvis(data) {
+  localStorage.setItem("avis", JSON.stringify(data));
+}
+
+function loadAvis(filter = "") {
+  const avis = getAvis();
+  const tbody = document.getElementById("avisTable");
+  tbody.innerHTML = "";
+
+  avis
+    .filter(a =>
+      a.nom.toLowerCase().includes(filter.toLowerCase()) ||
+      a.comment.toLowerCase().includes(filter.toLowerCase())
+    )
+    .forEach(a => {
+      tbody.innerHTML += `
+        <tr>
+          <td>${a.nom}</td>
+          <td>${"⭐".repeat(a.note)}</td>
+          <td>${a.comment}</td>
+          <td>
+            <button onclick="editAvis(${a.id})">✏️</button>
+            <button onclick="deleteAvis(${a.id})">🗑️</button>
+          </td>
+        </tr>
+      `;
+    });
+}
+
+document.getElementById("avisForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const avisData = {
+    id: editingAvisId || Date.now(),
+    nom: avisNom.value.trim(),
+    note: parseInt(avisNote.value),
+    comment: avisComment.value.trim()
+  };
+
+  const avis = getAvis();
+
+  if (editingAvisId) {
+    const index = avis.findIndex(a => a.id === editingAvisId);
+    avis[index] = avisData;
+  } else {
+    avis.push(avisData);
+  }
+
+  saveAvis(avis);
+  resetAvis();
+  loadAvis();
+});
+
+function editAvis(id) {
+  const a = getAvis().find(a => a.id === id);
+  editingAvisId = id;
+  avisNom.value = a.nom;
+  avisNote.value = a.note;
+  avisComment.value = a.comment;
+}
+
+function deleteAvis(id) {
+  saveAvis(getAvis().filter(a => a.id !== id));
+  loadAvis();
+}
+
+function resetAvis() {
+  avisForm.reset();
+  editingAvisId = null;
+}
+
+searchAvis.addEventListener("input", e => loadAvis(e.target.value));
+document.addEventListener("DOMContentLoaded", loadAvis);
+</script>
+
+
+<footer class="footer">
+  <div class="footer__bar">
+    © 2026 Bibliothèque Digitale – Projet Étudiant
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
