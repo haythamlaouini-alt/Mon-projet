@@ -33,8 +33,7 @@
       <li class="link"><a href="#books">Livres</a></li>
       <li class="link"><a href="#readers">Lecteurs</a></li>
       <li class="link"><a href="#reviews">Avis</a></li>
-      <li class="link"><button class="btn">Connexion</button></li>
-    </ul>
+<li class="link"><a href="login.html" class="btn">Deconnexion</a></li>    </ul>
   </nav>
 
   <div class="section__container header__container" id="home">
@@ -69,7 +68,7 @@
     <div class="about__card">
       <span><i class="ri-user-line"></i></span>
       <div>
-        <h4>Lecteurs</h4>
+        <h4 id="readers">Lecteurs</h4>
         <p>Une communauté passionnée.</p>
       </div>
     </div>
@@ -85,6 +84,7 @@
 </section>
 
 <!-- LIVRES -->
+<section class="section">
 <h2 class="section__header" id="books">Livres populaires</h2>
 
   <div class="class__grid">
@@ -690,6 +690,20 @@ document.addEventListener("DOMContentLoaded", loadAvis);
     © 2026 Bibliothèque Digitale – Projet Étudiant
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const nom = localStorage.getItem("nom");
+  if (nom) {
+    document.querySelector(".header__content h4").textContent =
+      "Bienvenue " + nom + " 📚";
+  }
+});
+</script>
+<!-- Librairies JS -->
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</body>
 
 <!-- JS -->
 <script src="https://unpkg.com/scrollreveal"></script>
