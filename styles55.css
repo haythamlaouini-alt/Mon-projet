@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --primary: #6b3e26;
+  --primary-dark: #54311f;
+  --bg: #deb0a7;
+  --text-dark: #3b2a20;
+  --text-light: #7a5c4a;
+  --white: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.section__container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 4rem 1rem;
+}
+
+.section__header {
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.section__description {
+  color: var(--text-light);
+}
+
+.btn {
+  background-color: var(--primary);
+  color: rgb(200, 160, 160);
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.header {
+  background-color: var(--bg);
+}
+
+nav {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav__links a {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.about__grid,
+.class__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about__card,
+.class__card,
+.client__card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.about__card:hover,
+.class__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--primary);
+  color: white;
+}
+/* ===============================
+   VARIABLES THEME BIBLIOTHEQUE
+================================ */
+:root {
+    --pink-light: #fff1ef;
+    --pink-hover: #ffe2dd;
+    --brown: #6b3e26;
+    --brown-dark: #54311f;
+    --beige: #f3e3d3;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   SECTION GENERALE
+================================ */
+.section {
+    padding: 2rem;
+    background-color: var(--pink-light);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.section-header h2 {
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* ===============================
+   CARD
+================================ */
+.card {
+    background-color: var(--white);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 15px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.card h3 {
+    color: var(--brown);
+    margin-bottom: 1rem;
+}
+
+/* ===============================
+   FORMULAIRE
+================================ */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--brown-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--beige);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--brown);
+    box-shadow: 0 0 6px rgba(107, 62, 38, 0.4);
+}
+
+/* ===============================
+   ACTIONS FORMULAIRE
+================================ */
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* ===============================
+   BOUTONS
+================================ */
+.btn {
+    padding: 0.6rem 1.3rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--brown);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--brown-dark);
+    transform: scale(1.05);
+}
+
+.btn-cancel {
+    background-color: #d7bfa7;
+    color: var(--white);
+}
+
+.btn-cancel:hover {
+    background-color: #c7a482;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   TABLE UTILISATEURS
+================================ */
+.users-table-container {
+    overflow-x: auto;
+}
+a{
+  text-decoration: none;
+  color: rgba(107, 62, 38, 0.4);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.users-table thead {
+    background-color: var(--brown);
+    color: var(--white);
+}
+
+.users-table th,
+.users-table td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.users-table tbody tr {
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+    background-color: var(--pink-hover);
+    transform: scale(1.01);
+}
+
+.users-table td button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.users-table td button:hover {
+    transform: scale(1.2);
+}
+.loop{
+    
+    border-radius: 20px;
+    border: 1px solid pink;
+   transition: background-color 0.25s ease, transform 0.2s ease;
+}
+.loop:hover{
+    
+    border-radius: 4px;
+    border: 1px solid rgb(105, 32, 32);
+   transition: background-color 0.25s ease, transform 0.2s ease;
+}
+textarea {
+  border-radius: 8px;
+  border: 1px solid #d7bfa7;
+  padding: 0.6rem;
+  resize: none;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #6b3e26;
+  box-shadow: 0 0 6px rgba(107, 62, 38, 0.4);
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
