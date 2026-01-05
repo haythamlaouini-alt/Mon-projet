@@ -84,6 +84,7 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  
 }
 
 .about__card,
@@ -93,12 +94,14 @@ nav {
   padding: 1.5rem;
   border-radius: 10px;
   transition: 0.3s;
+  border: 1px solid #8f664f;
 }
 
 .about__card:hover,
 .class__card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.507);
+  border-radius: 35px;
 }
 
 .footer {
@@ -281,7 +284,9 @@ a{
     
     border-radius: 20px;
     border: 1px solid pink;
-   transition: background-color 0.25s ease, transform 0.2s ease;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+
+
 }
 .loop:hover{
     

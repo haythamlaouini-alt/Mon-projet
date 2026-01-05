@@ -19,11 +19,9 @@
 <header class="header">
   <nav>
     <div class="nav__header">
-      <div class="nav__logo">
-        <a href="#home"><i class="ri-book-2-line"></i> Bibliothèque</a>
+        <a href="#home"><i class="ri-book-2-line"></i> Bibliothèque</a><!--classe pour le logo de la bibliothèque-->
       </div>
       <div class="nav__menu__btn" id="menu-btn">
-        <i class="ri-menu-line"></i>
       </div>
     </div>
 
@@ -90,22 +88,22 @@
   <div class="class__grid">
     <div class="class__card">
       <div class="class__content">
-        <h4>Le Petit Prince</h4>
-        <p>Antoine de Saint-Exupéry</p>
+        <h4>Livre</h4>
+        <p>Entre deux mondes</p>
       </div>
     </div>
 
     <div class="class__card">
       <div class="class__content">
-        <h4>L'Alchimiste</h4>
-        <p>Paulo Coelho</p>
+        <h4>L'Auteur</h4>
+        <p>Olivier Norek</p>
       </div>
     </div>
 
     <div class="class__card">
       <div class="class__content">
-        <h4>1984</h4>
-        <p>George Orwell</p>
+        <h4>Genre</h4>
+        <p>Roman social</p>
       </div>
     </div>
   </div>
@@ -183,7 +181,7 @@ function loadBooks(filter = "") {
     .filter(b => b.title.toLowerCase().includes(filter.toLowerCase()))
     .forEach(b => {
       table.innerHTML += `
-        <tr>
+      <tr>
           <td><img src="${b.image}" width="50"></td>
           <td>${b.title}</td>
           <td>${b.author}</td>
